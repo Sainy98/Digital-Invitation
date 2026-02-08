@@ -934,7 +934,6 @@ const Events = () => {
   {/* OUTER BORDER HOLDER */}
   <div className="relative rounded-3xl p-[2px] overflow-hidden">
 
-    {/* 🌟 MOVING BORDER */}
     <motion.div
       className="absolute inset-0"
       style={{
