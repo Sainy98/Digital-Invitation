@@ -176,7 +176,7 @@ const groomFamilyMembers: FamilyMember[] = [
     relation: "भतीजा",
     role: "कुलदीपक",
     blessings: "चाचा का नाम रोशन करो",
-    image: "https://i.pinimg.com/736x/f0/70/ce/f070ce870271973b92087310c957b822.jpg"
+    image: "https://i.pinimg.com/736x/1d/7a/86/1d7a86423ee393abac32b2b3d99e68f1.jpg"
   }
 ];
 

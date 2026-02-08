@@ -923,45 +923,104 @@ const Events = () => {
 </div>
 
 
-        {/* Event Timeline Summary */}
-        <motion.div 
-          className="mt-16"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-        >
-          <div className="bg-gradient-to-r from-rose-500 to-amber-500 rounded-3xl p-8 text-white shadow-xl">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-              <div>
-                <div className="text-4xl font-bold mb-2">{todaysEvents.length}</div>
-                <div className="text-rose-100">आज के कार्यक्रम</div>
-                {todaysEvents.length > 0 && (
-                  <div className="text-sm text-rose-50 mt-2">
-                    {todaysEvents.map(idx => events[idx].hindiName).join(', ')}
-                  </div>
-                )}
-              </div>
-              <div>
-                <div className="text-4xl font-bold mb-2">
-                  {nextEvent !== null ? events.filter((_, idx) => idx > nextEvent).length + 1 : events.length}
-                </div>
-                <div className="text-rose-100">आने वाले कार्यक्रम</div>
-                {nextEvent !== null && (
-                  <div className="text-sm text-rose-50 mt-2">
-                    अगला: {events[nextEvent].hindiName}
-                  </div>
-                )}
-              </div>
-              <div>
-                <div className="text-4xl font-bold mb-2">{events.length}</div>
-                <div className="text-rose-100">कुल समारोह</div>
-                <div className="text-sm text-rose-50 mt-2">
-                  ५ दिन का उत्सव
-                </div>
-              </div>
-            </div>
+{/* Event Timeline Summary */}
+<motion.div
+  className="mt-16"
+  initial={{ opacity: 0, y: 30 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.8 }}
+>
+  {/* OUTER BORDER HOLDER */}
+  <div className="relative rounded-3xl p-[2px] overflow-hidden">
+
+    {/* 🌟 MOVING BORDER */}
+    <motion.div
+      className="absolute inset-0"
+      style={{
+        background:
+          'linear-gradient(90deg, transparent, #fbbf24, #fb7185, #fbbf24, transparent)',
+        backgroundSize: '300% 100%',
+        filter: 'drop-shadow(0 0 14px rgba(251,191,36,0.6))',
+      }}
+      animate={{
+        backgroundPosition: ['0% 50%', '300% 50%'],
+      }}
+      transition={{
+        duration: 6,
+        repeat: Infinity,
+        ease: 'linear',
+      }}
+    />
+
+    {/* 🌸 CARD */}
+    <div
+      className="
+        relative z-10
+        rounded-3xl
+        bg-gradient-to-br
+        from-[#FFF8F1]
+        via-[#FDECEC]
+        to-[#FFF1F2]
+        p-8
+        shadow-xl
+      "
+      style={{
+        boxShadow:
+          '0 20px 45px rgba(251,191,36,0.15), 0 10px 20px rgba(251,113,133,0.12)',
+      }}
+    >
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+
+        {/* Today */}
+        <div>
+          <div className="text-4xl font-bold text-rose-700 mb-2">
+            {todaysEvents.length}
           </div>
-        </motion.div>
+          <div className="text-sm text-rose-600">
+            आज के कार्यक्रम
+          </div>
+          {todaysEvents.length > 0 && (
+            <div className="mt-2 text-xs text-gray-600">
+              {todaysEvents.map(idx => events[idx].hindiName).join(', ')}
+            </div>
+          )}
+        </div>
+
+        {/* Upcoming */}
+        <div>
+          <div className="text-4xl font-bold text-amber-700 mb-2">
+            {nextEvent !== null
+              ? events.filter((_, idx) => idx > nextEvent).length + 1
+              : events.length}
+          </div>
+          <div className="text-sm text-amber-600">
+            आने वाले कार्यक्रम
+          </div>
+          {nextEvent !== null && (
+            <div className="mt-2 text-xs text-gray-600">
+              अगला: {events[nextEvent].hindiName}
+            </div>
+          )}
+        </div>
+
+        {/* Total */}
+        <div>
+          <div className="text-4xl font-bold text-emerald-700 mb-2">
+            {events.length}
+          </div>
+          <div className="text-sm text-emerald-600">
+            कुल समारोह
+          </div>
+          <div className="mt-2 text-xs text-gray-600">
+            ५ दिन का उत्सव
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</motion.div>
 
         
       </div>
