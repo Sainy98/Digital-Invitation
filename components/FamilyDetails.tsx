@@ -1,4 +1,3 @@
-// components/FamilyDetails.tsx
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
@@ -26,7 +25,6 @@ interface FamilyGroup {
   icon: React.ReactNode;
 }
 
-// ✅ Custom Flower Confetti Component
 const FlowerConfetti = ({ show, onComplete }: { show: boolean; onComplete: () => void }) => {
   const [flowers, setFlowers] = useState<Array<{ id: number; x: number; y: number; rotation: number; size: number }>>([]);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -39,20 +37,18 @@ const FlowerConfetti = ({ show, onComplete }: { show: boolean; onComplete: () =>
 
       const { width, height } = container.getBoundingClientRect();
       
-      // Create 50 flowers in random positions
       for (let i = 0; i < 50; i++) {
         newFlowers.push({
           id: i,
           x: Math.random() * width,
           y: Math.random() * height,
           rotation: Math.random() * 360,
-          size: 8 + Math.random() * 12
+          size: 10 + Math.random() * 16
         });
       }
       
       setFlowers(newFlowers);
 
-      // Hide after 3 seconds
       const timer = setTimeout(() => {
         onComplete();
       }, 3000);
@@ -69,12 +65,7 @@ const FlowerConfetti = ({ show, onComplete }: { show: boolean; onComplete: () =>
     <div 
       ref={containerRef}
       className="fixed inset-0 pointer-events-none z-[9999] overflow-hidden"
-      style={{ 
-        top: '0px', // Fixed to viewport
-        left: '0px',
-        width: '100vw',
-        height: '100vh'
-      }}
+      style={{ width: '100vw', height: '100vh' }}
     >
       {flowers.map((flower) => (
         <motion.div
@@ -92,10 +83,7 @@ const FlowerConfetti = ({ show, onComplete }: { show: boolean; onComplete: () =>
             opacity: [1, 0],
             rotate: [flower.rotation, flower.rotation + 360]
           }}
-          transition={{
-            duration: 2 + Math.random(),
-            ease: "easeIn"
-          }}
+          transition={{ duration: 2 + Math.random(), ease: "easeIn" }}
         >
           <div className="w-full h-full bg-gradient-to-br from-amber-400 to-rose-500 rounded-full"></div>
         </motion.div>
@@ -104,7 +92,8 @@ const FlowerConfetti = ({ show, onComplete }: { show: boolean; onComplete: () =>
   );
 };
 
-// ✅ EASY TO UPDATE - Just modify these arrays
+// -------- DATA --------
+
 const brideFamilyMembers: FamilyMember[] = [
   {
     id: 1,
@@ -112,7 +101,7 @@ const brideFamilyMembers: FamilyMember[] = [
     relation: "पिता",
     role: "कुलपति",
     blessings: "सदा सुखी रहो, गौरव से जियो",
-    image: "https://images.unsplash.com/photo-1706185651641-70fde5591275?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    image: "https://images.unsplash.com/photo-1706185651641-70fde5591275?q=80&w=880&auto=format&fit=crop"
   },
   {
     id: 2,
@@ -120,7 +109,7 @@ const brideFamilyMembers: FamilyMember[] = [
     relation: "माता",
     role: "कुलवधू",
     blessings: "सासु माँ का आशीर्वाद सदा साथ रहे",
-    image: "https://img.freepik.com/free-photo/indian-woman-portrait-temple_53876-13366.jpg?t=st=1770536449~exp=1770540049~hmac=a6471730992de3a98b20ffe0160bb2491aace64d9f6a72282c2e2407e710de59&w=1480"
+    image: "https://img.freepik.com/free-photo/indian-woman-portrait-temple_53876-13366.jpg"
   },
   {
     id: 3,
@@ -136,7 +125,7 @@ const brideFamilyMembers: FamilyMember[] = [
     relation: "छोटे भैया",
     role: "सहायक",
     blessings: "खुशियाँ तुम्हारे कदम चूमें",
-    image: "https://images.unsplash.com/photo-1736452560705-be261e8e5171?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    image: "https://images.unsplash.com/photo-1736452560705-be261e8e5171?q=80&w=1170&auto=format&fit=crop"
   },
   {
     id: 5,
@@ -144,7 +133,7 @@ const brideFamilyMembers: FamilyMember[] = [
     relation: "बहन",
     role: "सहचरी",
     blessings: "दीदी का प्यार हमेशा साथ रहे",
-    image: "https://img.freepik.com/free-photo/celebration-deity-navratri_23-2151220070.jpg?t=st=1770536374~exp=1770539974~hmac=31d2405256fd8f6ccbc31ab80a8631a624b80c91219665005d69457a6e0c2816&w=1480"
+    image: "https://img.freepik.com/free-photo/celebration-deity-navratri_23-2151220070.jpg"
   }
 ];
 
@@ -159,7 +148,7 @@ const groomFamilyMembers: FamilyMember[] = [
   },
   {
     id: 7,
-    name: "श्रीमती योएशवरी  सिंह सिसोदिया",
+    name: "श्रीमती योएशवरी सिंह सिसोदिया",
     relation: "माता",
     role: "कुलदेवी",
     blessings: "माँ का आशीर्वाद तुम्हारे सिर पर सदा बना रहे",
@@ -222,7 +211,7 @@ const eldersMembers: FamilyMember[] = [
     relation: "भांजा",
     role: "कुल का भविष्य",
     blessings: "मामा की तरह वीर बनो",
-    image: "https://i.pinimg.com/736x/f4/c8/c2/f4c8c2598ca602593e23f96aa880a497.jpg"
+    image: "https://i.pinimg.com/1200x/06/8f/ea/068fea755aac802498776fe7d73ce9d2.jpg"
   },
   {
     id: 15,
@@ -230,19 +219,18 @@ const eldersMembers: FamilyMember[] = [
     relation: "भांजी",
     role: "घर की लक्ष्मी",
     blessings: "बुआ की तरह गुणवती बनो",
-    image: "https://i.pinimg.com/736x/e1/54/2b/e1542b595a9fbbe6eb527d550dab607b.jpg"
+    image: "https://i.pinimg.com/1200x/67/1d/05/671d05378d3c47b12273f56d9fa21615.jpg"
   }
 ];
+
+// -------- COMPONENT --------
 
 const FamilyDetails = () => {
   const [activeGroup, setActiveGroup] = useState<number>(0);
   const [showFlowerConfetti, setShowFlowerConfetti] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  useEffect(() => setMounted(true), []);
 
   const familyGroups = [
     {
@@ -268,53 +256,32 @@ const FamilyDetails = () => {
     }
   ];
 
-  const handleConfetti = () => {
-    setShowFlowerConfetti(true);
-  };
-
   if (!mounted) return null;
 
   return (
     <>
-      {/* Custom Flower Confetti */}
-      <FlowerConfetti 
-        show={showFlowerConfetti} 
-        onComplete={() => setShowFlowerConfetti(false)} 
-      />
+      <FlowerConfetti show={showFlowerConfetti} onComplete={() => setShowFlowerConfetti(false)} />
 
-      {/* Simple Section */}
-      <section ref={sectionRef} className="py-8 px-4 bg-gradient-to-b from-amber-50 to-rose-50">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="max-w-6xl mx-auto"
-        >
+      <section className="py-10 px-4 bg-gradient-to-b from-amber-50 to-rose-50">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex items-center justify-center gap-4 mb-10">
+      <div className="w-16 h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent"></div>
+      <Music className="w-6 h-6 text-rose-500" />
+      <div className="w-16 h-px bg-gradient-to-r from-transparent via-rose-400 to-transparent"></div>
+    </div>
           {/* Header */}
-          <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center gap-2 mb-4">
+          <div className="text-center mb-10">
+            <div className="inline-flex items-center gap-3 mb-4">
               <Home className="w-7 h-7 text-amber-600" />
               <h1 className={`text-3xl md:text-4xl font-bold ${greatVibes.className} bg-gradient-to-r from-amber-700 via-yellow-600 to-rose-700 bg-clip-text text-transparent`}>
                 परिवार परिचय
               </h1>
               <Users className="w-7 h-7 text-rose-600" />
             </div>
-            
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <div className="w-12 h-px bg-gradient-to-r from-transparent via-amber-500 to-transparent"></div>
-              <p className={`text-amber-800 text-sm md:text-base ${mangala.className}`}>
-                वंश वृक्ष - गौरव और परंपरा
-              </p>
-              <div className="w-12 h-px bg-gradient-to-r from-transparent via-rose-500 to-transparent"></div>
-            </div>
-
-            <p className={`text-gray-700 max-w-2xl mx-auto text-sm ${karma.className}`}>
-              राजपूत परंपरा के अनुरूप, परिवार के सभी सदस्यों का परिचय
-            </p>
           </div>
 
           {/* Tabs */}
-          <div className="flex overflow-x-auto scrollbar-hide mb-8 pb-2">
+          <div className="flex overflow-x-auto scrollbar-hide mb-10 pb-2">
             {familyGroups.map((group, index) => (
               <button
                 key={group.title}
@@ -322,104 +289,106 @@ const FamilyDetails = () => {
                 className={`flex-shrink-0 mx-2 px-6 py-3 rounded-full transition-all duration-300 flex items-center gap-3 ${
                   activeGroup === index 
                     ? 'bg-gradient-to-r from-amber-500 to-rose-500 text-white shadow-lg' 
-                    : `bg-gradient-to-r ${group.color} text-amber-900 shadow-md hover:shadow-lg`
+                    : `bg-gradient-to-r ${group.color} text-amber-900 shadow-md`
                 }`}
               >
-                <div className="flex items-center gap-2">
-                  <div className={`p-2 rounded-full ${
-                    activeGroup === index ? 'bg-white/20' : 'bg-white/50'
-                  }`}>
-                    {group.icon}
-                  </div>
-                  <div className="text-left">
-                    <div className={`font-bold text-sm ${mangala.className}`}>
-                      {group.title}
-                    </div>
-                    <div className={`text-xs ${activeGroup === index ? 'text-white/90' : 'text-amber-700'}`}>
-                      {group.description}
-                    </div>
-                  </div>
-                </div>
+                {group.icon}
+                <span className={`font-bold text-sm ${mangala.className}`}>
+                  {group.title}
+                </span>
               </button>
             ))}
           </div>
 
-          {/* Family Members */}
-          <div className="mb-12">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {familyGroups[activeGroup].members.map((member) => (
-                <motion.div
-                  key={member.id}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.4 }}
-                  className="bg-white/90 backdrop-blur-sm rounded-xl p-5 shadow-lg border border-amber-200/50 hover:shadow-xl transition-shadow"
-                >
-                  {/* Member Image/Icon */}
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className="relative flex-shrink-0">
-                      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-amber-200 to-rose-200 flex items-center justify-center overflow-hidden border-2 border-white shadow-md">
-                        {member.image ? (
-                          <img 
-                            src={member.image} 
-                            alt={member.name}
-                            className="w-full h-full object-cover"
-                          />
-                        ) : (
-                          <Users className="w-8 h-8 text-amber-700" />
-                        )}
-                      </div>
-                      <div className="absolute -bottom-1 -right-1 bg-gradient-to-r from-amber-500 to-rose-500 text-white rounded-full p-1">
-                        {member.relation === 'पिता' || member.relation === 'माता' ? (
-                          <Heart className="w-3 h-3" fill="white" />
-                        ) : member.relation.includes('भैया') ? (
-                          <Sword className="w-3 h-3" />
-                        ) : member.relation.includes('दादा') || member.relation.includes('दादी') ? (
-                          <Crown className="w-3 h-3" />
-                        ) : (
-                          <Star className="w-3 h-3" fill="currentColor" />
-                        )}
-                      </div>
+          {/* MEMBERS GRID */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            {familyGroups[activeGroup].members.map((member) => (
+
+              <motion.div
+  key={member.id}
+  initial={{ opacity: 0, y: 60 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true, margin: "-80px" }}
+  transition={{
+    opacity: { duration: 0.7 },
+    y: { duration: 6, repeat: Infinity, ease: "easeInOut" }
+  }}
+  className="relative bg-white/95 backdrop-blur rounded-3xl p-7 shadow-xl border border-amber-300/40 hover:shadow-2xl transition-all"
+>
+
+
+                {/* BIG PHOTO TOP */}
+                <div className="flex flex-col items-center text-center">
+
+                  <div className="relative mb-5">
+                    <div className="relative w-36 h-36 md:w-40 md:h-40 rounded-full overflow-hidden border-[5px] border-amber-300 shadow-xl bg-gradient-to-br from-amber-200 to-rose-200">
+                      
+                      {member.image ? (
+                        <img
+                          src={member.image}
+                          alt={member.name}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <Users className="w-16 h-16 text-amber-700 m-auto" />
+                      )}
                     </div>
-                    
-                    <div className="flex-1 min-w-0">
-                      <h3 className={`font-bold text-amber-900 text-lg mb-1 ${mangala.className}`}>
-                        {member.name}
-                      </h3>
-                      <div className="flex flex-wrap gap-2">
-                        <span className="px-3 py-1 bg-gradient-to-r from-amber-100 to-rose-100 rounded-full text-xs font-semibold text-amber-800">
-                          {member.relation}
-                        </span>
-                        <span className="px-3 py-1 bg-gradient-to-r from-rose-100 to-amber-100 rounded-full text-xs font-semibold text-rose-800">
-                          {member.role}
-                        </span>
-                      </div>
+
+                    {/* Relation Icon Badge */}
+                    <div className="absolute -bottom-2 right-2 bg-gradient-to-r from-amber-500 to-rose-500 text-white rounded-full p-2 shadow">
+                      {member.relation === 'पिता' || member.relation === 'माता' ? (
+                        <Heart className="w-4 h-4" fill="white" />
+                      ) : member.relation.includes('भैया') ? (
+                        <Sword className="w-4 h-4" />
+                      ) : member.relation.includes('दादा') || member.relation.includes('दादी') ? (
+                        <Crown className="w-4 h-4" />
+                      ) : (
+                        <Star className="w-4 h-4" fill="currentColor" />
+                      )}
                     </div>
                   </div>
 
-                  {/* Blessings */}
-                  <div className="mt-4 pt-4 border-t border-amber-100">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Heart className="w-4 h-4 text-rose-500" fill="currentColor" />
-                      <span className={`text-sm font-semibold text-amber-800 ${karma.className}`}>
-                        आशीर्वाद
-                      </span>
-                    </div>
-                    <p className={`text-amber-900/90 text-sm leading-relaxed ${mangala.className}`}>
-                      "{member.blessings}"
-                    </p>
+                  {/* NAME */}
+                  <h3 className={`font-bold text-xl text-amber-900 mb-2 ${mangala.className}`}>
+                    {member.name}
+                  </h3>
+
+                  {/* TAGS */}
+                  <div className="flex flex-wrap justify-center gap-2 mb-4">
+                    <span className="px-4 py-1 bg-amber-100 rounded-full text-xs font-semibold text-amber-800">
+                      {member.relation}
+                    </span>
+                    <span className="px-4 py-1 bg-rose-100 rounded-full text-xs font-semibold text-rose-800">
+                      {member.role}
+                    </span>
                   </div>
-                </motion.div>
-              ))}
-            </div>
+
+                </div>
+
+                {/* BLESSINGS */}
+                <div className="border-t border-amber-100 pt-4 text-center">
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <Heart className="w-4 h-4 text-rose-500" fill="currentColor" />
+                    <span className={`text-sm font-semibold text-amber-800 ${karma.className}`}>
+                      आशीर्वाद
+                    </span>
+                  </div>
+                  <p className={`text-amber-900/90 text-sm leading-relaxed ${mangala.className}`}>
+                    "{member.blessings}"
+                  </p>
+                </div>
+
+              </motion.div>
+            ))}
           </div>
 
-          {/* Ashirwad Button */}
-          <div className="text-center mb-12">
+          {/* CONFETTI BUTTON */}
+          <div className="text-center mt-14">
             <motion.button
               whileTap={{ scale: 0.95 }}
-              onClick={handleConfetti}
-              className="px-8 py-4 bg-gradient-to-r from-amber-500 to-rose-500 text-white font-medium rounded-full shadow-lg flex items-center justify-center gap-3 mx-auto hover:shadow-xl transition-all duration-300 active:scale-95"
+              onClick={() => setShowFlowerConfetti(true)}
+              className="px-10 py-4 bg-gradient-to-r from-amber-500 to-rose-500 text-white rounded-full shadow-lg flex items-center gap-3 mx-auto hover:shadow-xl"
             >
               <Sparkles className="w-5 h-5" />
               <span className={`text-lg ${mangala.className}`}>
@@ -427,34 +396,13 @@ const FamilyDetails = () => {
               </span>
               <Sparkles className="w-5 h-5" />
             </motion.button>
-            <p className={`text-amber-600 mt-3 text-sm ${karma.className}`}>
-              फूलों की वर्षा के साथ आशीर्वाद भेजें
-            </p>
           </div>
+<p className={`mt-4 text-center text-amber-700 text-sm ${karma.className}`}>
+  परिवार के प्रेम और आशीर्वाद से यह पावन बंधन और भी मजबूत बने
+</p>
 
-          {/* Closing Message */}
-          <div className="text-center">
-            <div className="inline-flex items-center justify-center gap-4 mb-6">
-              <div className="w-10 h-px bg-gradient-to-r from-transparent via-amber-500 to-transparent"></div>
-              <Music className="w-8 h-8 text-rose-600" />
-              <div className="w-10 h-px bg-gradient-to-r from-transparent via-rose-500 to-transparent"></div>
-            </div>
-            
-            <div className="max-w-2xl mx-auto">
-              <p className={`text-amber-800 text-lg mb-4 ${karma.className}`}>
-                "परिवार के प्रत्येक सदस्य का आशीर्वाद और समर्थन इस पावन बंधन की नींव है।"
-              </p>
-              
-              <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-amber-500/10 to-rose-500/10 rounded-full border border-amber-200/50">
-                <Shield className="w-5 h-5 text-amber-600" />
-                <span className={`text-amber-800 font-semibold ${mangala.className}`}>
-                  राजपूत परंपरा - गौरव और सम्मान
-                </span>
-                <Shield className="w-5 h-5 text-rose-600" />
-              </div>
-            </div>
-          </div>
-        </motion.div>
+
+        </div>
       </section>
 
       <style jsx>{`
