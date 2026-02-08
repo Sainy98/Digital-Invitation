@@ -402,27 +402,7 @@ const MobileEnvelope = ({ onOpen }: MobileEnvelopeProps) => {
                     WebkitOverflowScrolling: 'touch'
                   }}
                 >
-                  {/* Header with Close */}
-                  {/* <div className="sticky top-0 z-10 bg-gradient-to-b from-yellow-50/95 to-transparent pb-2 pt-5 px-6">
-                    <motion.button
-                      initial={{ opacity: 0, scale: 0 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: 0.5 }}
-                      onClick={() => {
-                        playSound('click');
-                        setShowInvitation(false);
-                        setIsOpen(false);
-                        setStep(0);
-                      }}
-                      whileTap={{ scale: 0.9 }}
-                      className="absolute top-4 right-4 w-10 h-10 bg-gradient-to-br from-yellow-100 to-amber-100 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg touch-manipulation border border-yellow-200"
-                      style={{ 
-                        WebkitTapHighlightColor: 'transparent',
-                      }}
-                    >
-                      <X className="w-5 h-5 text-amber-800" />
-                    </motion.button>
-                  </div> */}
+                
 
                   {/* Invitation Content */}
                   <div className="p-6 pt-2">
@@ -577,8 +557,8 @@ const MobileEnvelope = ({ onOpen }: MobileEnvelopeProps) => {
                           <h3 className="font-semibold text-amber-800 text-sm">संपर्क सूत्र</h3>
                         </div>
                         <p className="text-amber-700 text-sm">
-                          राम सिंह : +91 98765 43210<br/>
-                          महेश सिंह : +91 98765 43212
+                          रणवीर सिंह राठौड़ : +91 98765 43210<br/>
+                          महेश सिंह राठौड़ : +91 98765 43212
                         </p>
                       </div>
                     </div>

@@ -222,7 +222,7 @@ const eldersMembers: FamilyMember[] = [
     relation: "भांजा",
     role: "कुल का भविष्य",
     blessings: "मामा की तरह वीर बनो",
-    image: "https://i.pinimg.com/736x/56/b9/e9/56b9e9857d78200b84804bd0fd164712.jpg"
+    image: "https://i.pinimg.com/736x/f4/c8/c2/f4c8c2598ca602593e23f96aa880a497.jpg"
   },
   {
     id: 15,
@@ -230,7 +230,7 @@ const eldersMembers: FamilyMember[] = [
     relation: "भांजी",
     role: "घर की लक्ष्मी",
     blessings: "बुआ की तरह गुणवती बनो",
-    image: "https://i.pinimg.com/736x/86/34/ee/8634ee49f28f0b8cb17f535c20274038.jpg"
+    image: "https://i.pinimg.com/736x/e1/54/2b/e1542b595a9fbbe6eb527d550dab607b.jpg"
   }
 ];
 
