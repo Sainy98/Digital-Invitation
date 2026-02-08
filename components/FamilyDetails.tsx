@@ -2,8 +2,8 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { 
-  Users, Heart, Crown, Shield, Sword, Flower2, Star, 
+import {
+  Users, Heart, Crown, Shield, Sword, Flower2, Star,
   Sparkles, Home, Music
 } from 'lucide-react';
 import { karma, mangala, greatVibes } from '@/app/fonts';
@@ -36,7 +36,7 @@ const FlowerConfetti = ({ show, onComplete }: { show: boolean; onComplete: () =>
       if (!container) return;
 
       const { width, height } = container.getBoundingClientRect();
-      
+
       for (let i = 0; i < 50; i++) {
         newFlowers.push({
           id: i,
@@ -46,7 +46,7 @@ const FlowerConfetti = ({ show, onComplete }: { show: boolean; onComplete: () =>
           size: 10 + Math.random() * 16
         });
       }
-      
+
       setFlowers(newFlowers);
 
       const timer = setTimeout(() => {
@@ -62,7 +62,7 @@ const FlowerConfetti = ({ show, onComplete }: { show: boolean; onComplete: () =>
   if (!show) return null;
 
   return (
-    <div 
+    <div
       ref={containerRef}
       className="fixed inset-0 pointer-events-none z-[9999] overflow-hidden"
       style={{ width: '100vw', height: '100vh' }}
@@ -265,10 +265,10 @@ const FamilyDetails = () => {
       <section className="py-10 px-4 bg-gradient-to-b from-amber-50 to-rose-50">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center justify-center gap-4 mb-10">
-      <div className="w-16 h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent"></div>
-      <Music className="w-6 h-6 text-rose-500" />
-      <div className="w-16 h-px bg-gradient-to-r from-transparent via-rose-400 to-transparent"></div>
-    </div>
+            <div className="w-16 h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent"></div>
+            <Music className="w-6 h-6 text-rose-500" />
+            <div className="w-16 h-px bg-gradient-to-r from-transparent via-rose-400 to-transparent"></div>
+          </div>
           {/* Header */}
           <div className="text-center mb-10">
             <div className="inline-flex items-center gap-3 mb-4">
@@ -286,11 +286,10 @@ const FamilyDetails = () => {
               <button
                 key={group.title}
                 onClick={() => setActiveGroup(index)}
-                className={`flex-shrink-0 mx-2 px-6 py-3 rounded-full transition-all duration-300 flex items-center gap-3 ${
-                  activeGroup === index 
-                    ? 'bg-gradient-to-r from-amber-500 to-rose-500 text-white shadow-lg' 
+                className={`flex-shrink-0 mx-2 px-6 py-3 rounded-full transition-all duration-300 flex items-center gap-3 ${activeGroup === index
+                    ? 'bg-gradient-to-r from-amber-500 to-rose-500 text-white shadow-lg'
                     : `bg-gradient-to-r ${group.color} text-amber-900 shadow-md`
-                }`}
+                  }`}
               >
                 {group.icon}
                 <span className={`font-bold text-sm ${mangala.className}`}>
@@ -302,20 +301,17 @@ const FamilyDetails = () => {
 
           {/* MEMBERS GRID */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            
+
             {familyGroups[activeGroup].members.map((member) => (
 
               <motion.div
-  key={member.id}
-  initial={{ opacity: 0, y: 60 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: true, margin: "-80px" }}
-  transition={{
-    opacity: { duration: 0.7 },
-    y: { duration: 6, repeat: Infinity, ease: "easeInOut" }
-  }}
-  className="relative bg-white/95 backdrop-blur rounded-3xl p-7 shadow-xl border border-amber-300/40 hover:shadow-2xl transition-all"
->
+                key={member.id}
+                initial={{ opacity: 0, y: 60 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                 transition={{ duration: 0.6, ease: "easeOut" }}
+                className="relative bg-white/95 backdrop-blur rounded-3xl p-7 shadow-xl border border-amber-300/40 hover:shadow-2xl transition-all"
+              >
 
 
                 {/* BIG PHOTO TOP */}
@@ -323,7 +319,7 @@ const FamilyDetails = () => {
 
                   <div className="relative mb-5">
                     <div className="relative w-36 h-36 md:w-40 md:h-40 rounded-full overflow-hidden border-[5px] border-amber-300 shadow-xl bg-gradient-to-br from-amber-200 to-rose-200">
-                      
+
                       {member.image ? (
                         <img
                           src={member.image}
@@ -397,9 +393,9 @@ const FamilyDetails = () => {
               <Sparkles className="w-5 h-5" />
             </motion.button>
           </div>
-<p className={`mt-4 text-center text-amber-700 text-sm ${karma.className}`}>
-  परिवार के प्रेम और आशीर्वाद से यह पावन बंधन और भी मजबूत बने
-</p>
+          <p className={`mt-4 text-center text-amber-700 text-sm ${karma.className}`}>
+            परिवार के प्रेम और आशीर्वाद से यह पावन बंधन और भी मजबूत बने
+          </p>
 
 
         </div>
