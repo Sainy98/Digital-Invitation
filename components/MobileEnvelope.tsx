@@ -403,7 +403,7 @@ const MobileEnvelope = ({ onOpen }: MobileEnvelopeProps) => {
                   }}
                 >
                   {/* Header with Close */}
-                  <div className="sticky top-0 z-10 bg-gradient-to-b from-yellow-50/95 to-transparent pb-2 pt-5 px-6">
+                  {/* <div className="sticky top-0 z-10 bg-gradient-to-b from-yellow-50/95 to-transparent pb-2 pt-5 px-6">
                     <motion.button
                       initial={{ opacity: 0, scale: 0 }}
                       animate={{ opacity: 1, scale: 1 }}
@@ -422,7 +422,7 @@ const MobileEnvelope = ({ onOpen }: MobileEnvelopeProps) => {
                     >
                       <X className="w-5 h-5 text-amber-800" />
                     </motion.button>
-                  </div>
+                  </div> */}
 
                   {/* Invitation Content */}
                   <div className="p-6 pt-2">
